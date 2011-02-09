@@ -1,0 +1,63 @@
+--- 
+dependencies: 
+  tinder: 
+    group: 
+    - :default
+    version: "> 1.4.0"
+  mime-types: 
+    group: 
+    - :default
+    version: ">= 0"
+  eventmachine: 
+    group: 
+    - :default
+    version: ">= 0"
+  i18n: 
+    group: 
+    - :default
+    version: ">= 0"
+  logging: 
+    group: 
+    - :default
+    version: ">= 0"
+  hpricot: 
+    group: 
+    - :default
+    version: ">= 0"
+  activesupport: 
+    group: 
+    - :default
+    version: ">= 0"
+specs: 
+- activesupport: 
+    version: 3.0.4
+- addressable: 
+    version: 2.2.4
+- eventmachine: 
+    version: 0.12.10
+- multipart-post: 
+    version: 1.1.0
+- rack: 
+    version: 1.2.1
+- faraday: 
+    version: 0.5.5
+- hpricot: 
+    version: 0.8.3
+- i18n: 
+    version: 0.5.0
+- little-plugger: 
+    version: 1.1.2
+- logging: 
+    version: 1.4.3
+- mime-types: 
+    version: "1.16"
+- roauth: 
+    version: 0.0.3
+- twitter-stream: 
+    version: 0.1.10
+- tinder: 
+    version: 1.4.3
+hash: ffad4de823196b2ee180023e1e8e4403becffd3e
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org
