@@ -1,6 +1,7 @@
 class Excuse < CampfireBot::Plugin
   
   on_command 'excuse', :excuse
+  on_command 'make up an excuse', :excuse
   
   def excuse(msg)
     
