@@ -50,6 +50,11 @@ describe "processing messages" do
     it "should handle a command with nickname and no delimiter" do
       match?("#{@nickname} command foo").should be_true
     end
+    
+    it "should handle a multi-word command with nickname and no delimiter" do
+      @command = TestingCommand.new("do a command", nil, nil)
+      match?("#{@nickname} do a command foo").should be_true
+    end
   
     it "should handle a command with nickname and arguments" do
       match?("#{@nickname}, command foo").should be_true
@@ -64,7 +69,7 @@ describe "processing messages" do
     end
   
     it "should ignore things that aren't commands at all" do
-      ["nothing", "#{@nickname}, ", " ! command", "hey #{@nickname}", "!command!command", "!command,command"].each do |t|
+      ["nothing", "#{@nickname}, ", " ! command", "hey #{@nickname}"].each do |t|
         match?(t).should be_false
       end
     end
@@ -83,7 +88,7 @@ describe "processing messages" do
     
     it "should return one argument" do
       filter("!command foo").should == "foo"
-      filter("#{@nickname}, command foo").should == "foo"
+      filter("#{@nickname}, command foo").should == "foo"      
     end
     
     it "should return more than one argument" do
@@ -95,6 +100,26 @@ describe "processing messages" do
       filter("!command !command").should == "!command"
     end
     
-  end
+    describe "when command is multi-word" do
+      before(:each) do
+        @command = TestingCommand.new("do a command", nil, nil)
+      end
+      
+      it "should be empty with no arguments" do
+        filter("!do a command").should == ""
+        filter("#{@nickname}, do a command").should == ""
+      end
+
+      it "should return one argument" do
+        filter("!do a command foo").should == "foo"
+        filter("#{@nickname}, do a command foo").should == "foo"      
+      end
+
+      it "should return more than one argument" do
+        filter("!do a command foo bar baz").should == "foo bar baz"
+        filter("#{@nickname}, do a command foo bar baz").should == "foo bar baz"
+      end
+    end
+  end  
 end
 

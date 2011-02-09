@@ -34,12 +34,12 @@ module CampfireBot
     class Command < EventHandler
       handles :messages
 
-      def match?(msg)
-        !!(
+      def match?(msg)        
+        !!((
           msg[:message][0..0] == '!' ||
           msg[:message]       =~ /^#{bot.config['nickname']}(,|:)?/i
         ) &&
-        msg[:message].gsub(/^\!/, '').gsub(/^#{bot.config['nickname']}(,|:)?\s*/i, '').split(' ')[0].to_s.downcase == @matcher.downcase
+        msg[:message].gsub(/^\!/, '').gsub(/^#{bot.config['nickname']}(,|:)?\s*/i, '') =~ /^#{Regexp.escape(@matcher)}/i)
         # FIXME - the above should be just done with one regexp to pull out the first non-! non-<bot name> word.
       end
 
