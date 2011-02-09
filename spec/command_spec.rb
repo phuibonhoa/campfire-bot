@@ -47,10 +47,14 @@ describe "processing messages" do
       match?("#{@nickname}: command").should be_true
     end
   
+    it "should handle a command with nickname and no delimiter" do
+      match?("#{@nickname} command foo").should be_true
+    end
+  
     it "should handle a command with nickname and arguments" do
       match?("#{@nickname}, command foo").should be_true
     end
-  
+      
     it "should ignore a non-matching !command" do
       match?("!foo").should be_false
     end
