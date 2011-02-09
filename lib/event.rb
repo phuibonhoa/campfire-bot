@@ -35,7 +35,7 @@ module CampfireBot
       handles :messages
 
       def match?(msg)
-        (
+        !!(
           msg[:message][0..0] == '!' ||
           msg[:message]       =~ Regexp.new("^#{bot.config['nickname']}(,|:)", Regexp::IGNORECASE)
         ) &&
