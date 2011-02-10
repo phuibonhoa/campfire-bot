@@ -1,8 +1,15 @@
 h1. Campfire Bot
 
-This is a multi-purpose and extensible Campfire bot.  I've forked it to get it running for myself along with some misc clean up.  Notable changes on this branch are:
+This is a multi-purpose and extensible Campfire bot.  I've forked it to get it running for myself along with some misc clean up.  
 
-* Added 'image me' command ala Zach Holman's awesome "automating inefficiencies video":http://zachholman.com/2011/01/automating-inefficiencies/
+New commands added are:
+
+* 'image me' to get a random google image result ala Zach Holman's awesome "automating inefficiencies video":http://zachholman.com/2011/01/automating-inefficiencies/
+* 'beiber me' to get a random justin beiber image
+
+
+Internally changes include:
+
 * Added support for multi-word commands
 * Added bundler for dependencies management
 
