@@ -5,7 +5,12 @@ class ImageMe < CampfireBot::Plugin
   BASE_URL = 'http://images.google.com/images'
   
   on_command 'image me', :random_image
-  
+  on_command 'beiber me', :random_beiber_image
+
+  def random_beiber_image
+    random_image(:message => 'justin beiber')
+  end
+
   def random_image(msg)
     msg.speak(random_url(msg[:message]))
   end
