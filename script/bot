@@ -6,5 +6,7 @@ BOT_ROOT        = File.join(File.dirname(__FILE__), '..')
 
 require File.join(BOT_ROOT, 'lib', 'bot')
 
-bot.connect
-bot.run
+silence_warnings do
+  bot.connect
+  bot.run
+end
