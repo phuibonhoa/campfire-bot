@@ -1,14 +1,18 @@
 h1. Campfire Bot
 
-This is a bot for the Campfire web-based chat system.
+This is a multi-purpose and extensible Campfire bot.  I've forked it to get it running for myself along with some misc clean up.  Notable changes on this branch are:
 
-It aims to be multi-purpose and extensible.
+* Added 'image me' command ala Zach Holman's awesome "automating inefficiencies video":http://zachholman.com/2011/01/automating-inefficiencies/
+* Added support for multi-word commands
+* Added bundler for dependencies management
+
+If you have suggestions for useful or fun plugins, let me know; I'm always looking for new plugins to add on!
 
 h2. Installation
 
 h3. Download
 
-Download the source from "github":http://github.com/timriley/campfire-bot
+Download the source from "github":http://github.com/phuibonhoa/campfire-bot
  
 h3. Gem Dependencies:
 
@@ -30,13 +34,13 @@ To run the bot, run @script/bot@ with the environment name as the argument:
   script/bot development
 
 
+h2. Forked from
+
+* Josh Wand - "github":http://github.com/joshwand
+
 h2. Original Author
 
 Tim Riley - "github":http://github.com/timriley | "www":http://openmonkey.com/ | "email":mailto:tim@openmonkey.com
-
-h2. Maintainer
-
-* Josh Wand - "github":http://github.com/joshwand
 
 h3. Contributors
 
