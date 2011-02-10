@@ -46,7 +46,7 @@ module CampfireBot
       protected
 
       def filter_message(msg)
-        msg[:message] = msg[:message].gsub(Regexp.new("^(!|#{bot.config['nickname']}[,:]\\s+)#{@matcher.downcase}\\s?", Regexp::IGNORECASE), '')
+        msg[:message] = msg[:message].gsub(/^(!|#{bot.config['nickname']}[,:]?\s+)#{@matcher.downcase}\s?/i, '')
         msg
       end
     end

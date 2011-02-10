@@ -115,9 +115,17 @@ describe "processing messages" do
         filter("#{@nickname}, do a command foo").should == "foo"      
       end
 
+      it "should return one argument when command has no delimiter" do
+        filter("#{@nickname} do a command foo").should == "foo"      
+      end
+
       it "should return more than one argument" do
         filter("!do a command foo bar baz").should == "foo bar baz"
         filter("#{@nickname}, do a command foo bar baz").should == "foo bar baz"
+      end
+      
+      it "should return more than one argument when command has no delimiter" do
+        filter("#{@nickname} do a command foo bar baz").should == "foo bar baz"
       end
     end
   end  
