@@ -19,7 +19,7 @@ class ImageMe < CampfireBot::Plugin
 
   def fetch_image_urls(term)
     GoogleAjax.referrer = 'http://www.bookrenter.com'
-    GoogleAjax::Search.images(term, :start => rand(4)).first.last.map { |e| e[:unescaped_url] } rescue []
+    GoogleAjax::Search.images(term, :start => rand(7)).first.last.map { |e| e[:unescaped_url] } rescue []
   end
   
   def random_url(term)
