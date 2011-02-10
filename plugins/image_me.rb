@@ -4,6 +4,7 @@ require 'tempfile'
 class ImageMe < CampfireBot::Plugin
   BASE_URL = 'http://images.google.com/images'
   
+  on_command 'fetch me', :random_image
   on_command 'image me', :random_image
   on_command 'beiber me', :random_beiber_image
 
