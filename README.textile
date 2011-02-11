@@ -20,15 +20,6 @@ h2. Installation
 h3. Download
 
 Download the source from "github":http://github.com/phuibonhoa/campfire-bot
- 
-h3. Gem Dependencies:
-
-* rubygems
-* tinder > 1.4.0
-* hpricot
-* mime-types
-* activesupport
-* logging
 
 h3. Configuration
 
@@ -36,22 +27,33 @@ Create a @config.yml@ in the root of the source directory. Use @config.example.y
 
 h2. Usage
 
+If this is your first time running the bot you will have to run:
+
+  bundle install
+
 To run the bot, run @script/bot@ with the environment name as the argument:
 
-  script/bot development
+  script/bot development  
+  
+h2. Credits
+
+!http://assets0.bookrenter.com/images/core/logo.gif(BookRenter.com)!
+
+This iteration of campfire-bot is currently maintained by Philippe Huibonhoa and funded by "BookRenter.com":http://www.bookrenter.com.
+
+The project was forked from "Josh Wand":http://github.com/joshwand.  You can see the original project "here":https://github.com/joshwand/campfire-bot.
 
 
-h2. Forked from
+h2. CONTRIBUTING
 
-* Josh Wand - "github":http://github.com/joshwand
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-h2. Original Author
+h2. COPYRIGHT
 
-Tim Riley - "github":http://github.com/timriley | "www":http://openmonkey.com/ | "email":mailto:tim@openmonkey.com
-
-h3. Contributors
-
-* Marcel M. Cary - "github":http://github.com/mcary
-* Hugh Evans - "github":http://github.com/artpop
-* Sean O'Dowd - "github":http://github.com/seanodowd
-* Andrew Erickson - "github":http://github.com/aerickson
+Copyright (c) 2011 Philippe Huibonhoa. See LICENSE.txt for further details.
