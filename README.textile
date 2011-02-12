@@ -4,8 +4,8 @@ This is a multi-purpose and extensible Campfire bot.  I've forked it to get it r
 
 New commands added are:
 
-* 'image me' to get a random google image result ala Zach Holman's awesome "automating inefficiencies video":http://zachholman.com/2011/01/automating-inefficiencies/
-* 'beiber me' to get a random justin beiber image
+* @image me@ to get a random google image result ala Zach Holman's awesome "automating inefficiencies video":http://zachholman.com/2011/01/automating-inefficiencies/
+* @beiber me@ to get a random justin beiber image
 
 
 Internally changes include:
@@ -29,11 +29,11 @@ h2. Usage
 
 If this is your first time running the bot you will have to run:
 
-  bundle install
+    bundle install
 
-To run the bot, run @script/bot@ with the environment name as the argument:
+To run the bot, run @script/bot@ with the environment name as the argument; for example:
 
-  script/bot development  
+    script/bot development  
   
 h2. Credits
 
