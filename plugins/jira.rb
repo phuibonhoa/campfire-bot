@@ -27,7 +27,7 @@ class Jira < CampfireBot::Plugin
     # log "initializing... "
     @data_file  = File.join(BOT_ROOT, 'tmp', "jira-#{BOT_ENVIRONMENT}.yml")
     @cached_ids = YAML::load(File.read(@data_file)) rescue {}
-    @last_checked ||= 10.minutes.ago
+    @last_checked = @cached_ids[:last_checked] || 10.minutes.ago
     @log = Logging.logger["CampfireBot::Plugin::Jira"]
   end
 
@@ -45,7 +45,10 @@ class Jira < CampfireBot::Plugin
     saw_an_issue = false
     old_cache = Marshal::load(Marshal.dump(@cached_ids)) # since ruby doesn't have deep copy
     
+    
     @lastlast = time_ago_in_words(@last_checked)
+    @last_checked = Time.now
+    
 
     tix = fetch_jira_url
     raise if tix.nil?
@@ -55,7 +58,7 @@ class Jira < CampfireBot::Plugin
         saw_an_issue = true
 
         @cached_ids = update_cache(ticket, @cached_ids) 
-        flush_cache(@cached_ids)
+        
   
         messagetext = "#{ticket[:type]} - #{ticket[:title]} - #{ticket[:link]} - reported by #{ticket[:reporter]} - #{ticket[:priority]}"
         msg.speak(messagetext)
@@ -64,7 +67,7 @@ class Jira < CampfireBot::Plugin
       end
     end
 
-    @last_checked = Time.now
+    flush_cache(@cached_ids)
     @log.info "no new issues." if !saw_an_issue
   
     saw_an_issue
@@ -87,14 +90,13 @@ class Jira < CampfireBot::Plugin
       
     searchurls.each do |searchurl|
       begin
-        @log.info "checking jira for new issues..."
+        @log.info "checking jira for new issues... #{searchurl}"
         xmldata = open(searchurl).read
         doc = REXML::Document.new(xmldata)
-      
         raise Exception.new("response had no content") if doc.nil?
-        doc.elements.inject('rss/channel/item', []) do |tix, element|
-        tix.push(parse_ticket_info(element))
-      end
+        doc.elements.inject('rss/channel/item', tix) do |tix, element|
+          tix.push(parse_ticket_info(element))
+        end
       rescue Exception => e
         @log.error "error connecting to jira: #{e.message}"
         # @log.error "#{e.backtrace}"
@@ -145,6 +147,7 @@ class Jira < CampfireBot::Plugin
 
   # write the cache to disk
   def flush_cache(cache)
+    cache[:last_checked] = @last_checked
     File.open(@data_file, 'w') do |out|
       YAML.dump(cache, out)
     end
