@@ -6,10 +6,10 @@ class ImageMe < CampfireBot::Plugin
   
   on_command 'fetch me', :random_image
   on_command 'image me', :random_image
-  on_command 'beiber me', :random_beiber_image
-
-  def random_beiber_image(msg)
-    msg.speak(random_url('justin beiber'))
+  on_command 'bieber me', :random_bieber_image
+  
+  def random_bieber_image(msg)
+    msg.speak(random_url('justin bieber'))
   end
 
   def random_image(msg)

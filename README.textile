@@ -5,7 +5,7 @@ This is a multi-purpose and extensible Campfire bot.  I've forked it to get it r
 New commands added are:
 
 * @image me@ to get a random google image result ala Zach Holman's awesome "automating inefficiencies video":http://zachholman.com/2011/01/automating-inefficiencies/
-* @beiber me@ to get a random justin beiber image
+* @bieber me@ to get a random justin bieber image
 
 
 Internally changes include:
