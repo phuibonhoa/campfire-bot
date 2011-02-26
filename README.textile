@@ -2,10 +2,14 @@ h1. Campfire Bot
 
 This is a multi-purpose and extensible Campfire bot.  I've forked it to get it running for myself along with some misc clean up.  
 
-New commands added are:
+New plugins / commands added are:
 
-* @image me@ to get a random google image result ala Zach Holman's awesome "automating inefficiencies video":http://zachholman.com/2011/01/automating-inefficiencies/
-* @bieber me@ to get a random justin bieber image
+* Image Me (ala Zach Holman's awesome "automating inefficiencies video":http://zachholman.com/2011/01/automating-inefficiencies/)
+** @image me@ to get a random google image result 
+** @bieber me@ to get a random justin bieber image
+* TeamCity RSS
+** @deploy today@ to start monitoring team city status  (every hour bot will report if team city is red for a given project)
+** @no deploy today@ to stop monitoring team city status
 
 
 Internally changes include:
