@@ -27,7 +27,7 @@ private
       "If its bad code, I'd blame Philippe. Otherwise try",
       "I'm not sure. My answer will probably be as bad as Probie's. Try",
       "Mark seems to have strong opinions on these things. Maybe he knows. Or try",
-      "Camy isn't paying attention, but i'd ask him. Or try",
+      "Kamy isn't paying attention, but i'd ask him. Or try",
       "Sorry, i don't understand the Queen's English. I bet Cameron knows the answer. Or try",
       "You may want to ask Corinne's friend with the website from 1999. Or maybe just try",
       "I could give a fake answer like Denny. Instead i'll just admit i don't know. Try",
