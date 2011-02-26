@@ -1,6 +1,8 @@
 # External Libs
 require 'rubygems'
 require 'active_support'
+require 'active_support/hash_with_indifferent_access'
+require 'active_support/core_ext'
 require 'yaml'
 require 'eventmachine'
 require 'logging'
@@ -128,7 +130,7 @@ module CampfireBot
       @config['rooms'].each do |room_name|
         @rooms[room_name] = @campfire.find_room_by_name(room_name)
         res = @rooms[room_name].join
-        # raise Exception.new("got #{res.code} error when joining room #{room_name}: #{res.body}") if res.code != 200 
+        raise Exception.new("couldn't find a room named #{room_name}!") if @rooms[room_name].nil?
       end
     end
 
