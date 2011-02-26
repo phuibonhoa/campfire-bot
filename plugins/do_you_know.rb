@@ -53,16 +53,15 @@ private
         question_response = fetch_json_hash("http://api.stackoverflow.com/1.1/questions/#{question_id}?body=true", true)
         question = "I know this: #{question_response['questions'][0]['title']}"
         question = "#{question} <a href='http://stackoverflow.com/questions/#{question_id}'>*</a>"
-        statements << question
       
         answer_response = fetch_json_hash("http://api.stackoverflow.com/1.1/questions/#{question_id}/answers?sort=votes&body=true&pagesize=1", true)
         answer = answer_response['answers'][0]
         if answer
+          statements << question
           statements << answer['body']
-        else
-          statements << "I take it it back. Try #{googling_link(question)}."
         end
-      else
+      end
+      if statements.empty?
         statements << dont_know_answer(question)
       end
     rescue Exception => e
