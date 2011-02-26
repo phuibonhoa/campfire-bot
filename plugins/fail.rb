@@ -6,11 +6,12 @@ class Fail < CampfireBot::Plugin
   on_command 'fail', :fail
   
   def fail(msg)
-    # Scrape random fail
-    fail = (Hpricot(open('http://failblog.org/?random#top'))/'div.entry img').first
-
-    msg.speak(fail['src'])
+    msg.speak(self.random_fail)
   rescue => e
     msg.speak e
+  end
+  
+  def random_fail
+    (Hpricot(open('http://failblog.org/?random#top'))/'div.entry img').first['src']
   end
 end

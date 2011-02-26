@@ -116,7 +116,7 @@ class TeamCityRss < CampfireBot::Plugin
 
   on_command 'deploy', :turn_on_tc_monitor
   on_command 'no deploy', :turn_off_tc_monitor
-  at_interval 1.minute, :check_tc_status
+  at_interval 1.hour, :check_tc_status
 
   def monitor_tc?
     @monitor_tc ||= false
@@ -137,6 +137,9 @@ class TeamCityRss < CampfireBot::Plugin
     unless deploy_project.success?
       msg.speak(":warning: Deploy scheduled but #{deploy_branch} is RED on TeamCity")
       msg.speak("Failures on: " + deploy_project.failed_configurations.map { |failed_configuration| failed_configuration.name }.to_sentence)
+      
+      fail = CampfireBot::Plugin.registered_plugins['Fail'].try(:random_fail)
+      msg.speak(fail) if fail
     end
   end
   
