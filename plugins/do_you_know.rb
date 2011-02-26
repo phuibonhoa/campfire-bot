@@ -33,7 +33,8 @@ private
       "I could give a fake answer like Denny. Instead i'll just admit i don't know. Try",
       "I can't help - Andrew's Shared Should Gem has my whole environment messed up right now. Try",
       "That sounds \"designer-y\" to me. Is this something #{%w(Harlan BenD).rand} knows about? Or try",
-      "#{%w(Will BenS Chris).rand} usually knows about this weird-o, obscure stuff. Or try"
+      "I'm sure Chris knows, but he's doing DevOps stuff now and won't waste his time with this junk. I guess you could try",
+      "#{%w(Will BenS).rand} usually knows about this weird-o, obscure stuff. Or try"
     ].rand
     return "#{message} #{googling_link(question)}."
   end
