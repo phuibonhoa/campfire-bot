@@ -1,5 +1,5 @@
 - add chronic integration for interval-based events: at_time("every day at 9am", :method_name)
- 
+
 - per-plugin config files (inside a config-specific dir) - best not to pollute a single YAML file.
 
 - get it to work with the newest version of mechanize.
