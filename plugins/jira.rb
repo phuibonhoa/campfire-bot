@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'hpricot'
 require 'tempfile'
-
+require 'rexml/document'
 ##
 # JIRA plugin
 # 
@@ -26,7 +26,7 @@ class Jira < CampfireBot::Plugin
   def initialize
     # log "initializing... "
     @data_file  = File.join(BOT_ROOT, 'tmp', "jira-#{BOT_ENVIRONMENT}.yml")
-    @cached_ids = YAML::load(File.read(@data_file)) rescue {}
+    @cached_ids = YAML::load(File.read(@data_file)) || {}
     @last_checked = @cached_ids[:last_checked] || 10.minutes.ago
     @log = Logging.logger["CampfireBot::Plugin::Jira"]
   end
@@ -62,6 +62,7 @@ class Jira < CampfireBot::Plugin
   
         messagetext = "#{ticket[:type]} - #{ticket[:title]} - #{ticket[:link]} - reported by #{ticket[:reporter]} - #{ticket[:priority]}"
         msg.speak(messagetext)
+        msg.play("vuvuzela") if ticket[:priority] == "Blocker"
         @log.info messagetext
           
       end

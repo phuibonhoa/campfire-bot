@@ -1,6 +1,6 @@
 h1. Campfire Bot
 
-This is a multi-purpose and extensible Campfire bot.  I've forked it to get it running for myself along with some misc clean up.  
+This is a multi-purpose and extensible bot for 37 Signals' Campfire chat service.  I've forked it to get it running for myself along with some misc clean up.  
 
 New plugins / commands added are:
 
@@ -46,7 +46,6 @@ h2. Credits
 This iteration of campfire-bot is currently maintained by "Philippe Huibonhoa":http://github.com/phuibonhoa and funded by "BookRenter.com":http://www.bookrenter.com.
 
 The project was forked from "Josh Wand":http://github.com/joshwand.  You can see the original project "here":https://github.com/joshwand/campfire-bot.
-
 
 h2. CONTRIBUTING
 

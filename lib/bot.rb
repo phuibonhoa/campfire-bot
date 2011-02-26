@@ -129,8 +129,8 @@ module CampfireBot
 
       @config['rooms'].each do |room_name|
         @rooms[room_name] = @campfire.find_room_by_name(room_name)
-        res = @rooms[room_name].join
         raise Exception.new("couldn't find a room named #{room_name}!") if @rooms[room_name].nil?
+        res = @rooms[room_name].join
       end
     end
 
