@@ -8,11 +8,15 @@ class ImageMe < CampfireBot::Plugin
   on_command 'image me', :random_image
   on_command 'bieber me', :random_bieber_image
   
+  def initialize
+    @log = Logging.logger["CampfireBot::Plugin::ImageMe"]
+  end
+  
   def random_bieber_image(msg)
     msg.speak(random_url('justin bieber'))
   end
 
-  def random_image(msg)
+  def random_image(msg)    
     msg.speak(random_url(msg[:message]))
   end
   
@@ -20,11 +24,12 @@ class ImageMe < CampfireBot::Plugin
 
   def fetch_image_urls(term)
     GoogleAjax.referrer = 'http://www.bookrenter.com'
-    GoogleAjax::Search.images(term, :start => rand(7)).first.last.map { |e| e[:unescaped_url] } rescue []
+    GoogleAjax::Search.images(term, :start => rand(7))[:results].map { |e| e[:unescaped_url] }
   end
   
   def random_url(term)
     image_urls = fetch_image_urls(term)
+    @log.info image_urls.inspect
     image_urls[rand(image_urls.size)]
   end  
 end
