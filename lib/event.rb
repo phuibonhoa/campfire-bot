@@ -34,7 +34,7 @@ module CampfireBot
     class Command < EventHandler
       handles :messages
 
-      def match?(msg)        
+      def match?(msg)
         !!((
           msg[:message][0..0] == '!' ||
           msg[:message]       =~ /^#{bot.config['nickname']}(,|:)?/i
