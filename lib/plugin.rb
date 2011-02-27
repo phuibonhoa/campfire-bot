@@ -64,14 +64,17 @@ module CampfireBot
         @@config_defaults[self.name][name] = default
       end
     end
+    
     def initialize
       # initialize attr_readers setup with config_var
       config_prefix = self.class.to_s.underscore
-      (@@config_defaults[self.class.name] || {}).each_pair { |name, default|
-        instance_variable_set("@#{name.to_s}",
-                              bot.config["#{config_prefix}_#{name.to_s}"] ||
-                                default)
-      }
+      (@@config_defaults[self.class.name] || {}).each_pair do |name, default|
+        instance_variable_set("@#{name.to_s}", bot.config["#{config_prefix}_#{name.to_s}"] || default)
+      end
+    end
+    
+    def config
+      @config ||= YAML.load_file(File.join(BOT_ROOT, 'var', "#{self.class.to_s.underscore}.yml"))
     end
   end
 end
