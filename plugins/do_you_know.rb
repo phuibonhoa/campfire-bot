@@ -21,21 +21,7 @@ private
   end
 
   def dont_know_answer(question)
-    message = [
-      "Sorry, busy looking at Facebook right now. I'd try",
-      "Too stressed to think about it from all this distributor integration work Paolo and I are doing. I hate #{%w(NACS Follett MBS B&T).rand}! Try",
-      "If its bad code, I'd blame Philippe. Otherwise try",
-      "I'm not sure. My answer will probably be as bad as Probie's. Try",
-      "Mark seems to have strong opinions on these things. Maybe he knows. Or try",
-      "Kamy isn't paying attention, but i'd ask him. Or try",
-      "Sorry, i don't understand the Queen's English. I bet Cameron knows the answer. Or try",
-      "You may want to ask Corinne's friend with the website from 1999. Or maybe just try",
-      "I could give a fake answer like Denny. Instead i'll just admit i don't know. Try",
-      "I can't help - Andrew's Shared Should Gem has my whole environment messed up right now. Try",
-      "That sounds \"designer-y\" to me. Is this something #{%w(Harlan BenD).rand} knows about? Or try",
-      "I'm sure Chris knows, but he's doing DevOps stuff now and won't waste his time with this junk. I guess you could try",
-      "#{%w(Will BenS).rand} usually knows about this weird-o, obscure stuff. Or try"
-    ].rand
+    message = config['dont_know_responses'].rand || "Sorry, I don't know the answer to that.  Try"
     return "#{message} #{googling_link(question)}."
   end
 
