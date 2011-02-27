@@ -116,20 +116,20 @@ class TeamCityRss < CampfireBot::Plugin
 
   on_command 'deploy', :turn_on_tc_monitor
   on_command 'no deploy', :turn_off_tc_monitor
-  at_interval 1.minute, :check_tc_status
+  at_interval 1.hour, :check_tc_status
   
-  CONFIG_FILE = File.join(BOT_ROOT, 'var', 'team_city_rss.yml')
-
   def monitor_tc?
     @monitor_tc ||= false
   end
   
   def turn_on_tc_monitor(msg)
     @monitor_tc = true
+    msg.speak("GL!")
   end
   
   def turn_off_tc_monitor(msg)
     @monitor_tc = false
+    msg.speak("Canceling teamcity notifications... slackers")
   end
   
   def check_tc_status(msg)
@@ -184,9 +184,4 @@ class TeamCityRss < CampfireBot::Plugin
   def deploy_project
     team_city.project(deploy_branch)
   end
-
-  def config
-    @config ||= YAML.load_file(CONFIG_FILE)
-  end
-
 end
