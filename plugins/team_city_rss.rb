@@ -124,7 +124,7 @@ class TeamCityRss < CampfireBot::Plugin
   
   def turn_on_tc_monitor(msg)
     @monitor_tc = true
-    msg.speak("GL!")
+    msg.speak("GL!") if check_tc_status(msg)
   end
   
   def turn_off_tc_monitor(msg)
@@ -136,13 +136,18 @@ class TeamCityRss < CampfireBot::Plugin
     return unless monitor_tc?
 
     refresh
-    unless deploy_project.success?
+    tc_was_green = if deploy_project.success?
+      true
+    else
       msg.speak(":warning: Deploy scheduled but #{deploy_branch} is RED on TeamCity")
       msg.speak("Failures on: " + deploy_project.failed_configurations.map { |failed_configuration| failed_configuration.name }.to_sentence)
       
       fail = CampfireBot::Plugin.registered_plugins['Fail'].try(:random_fail)
       msg.speak(fail) if fail
+      false
     end
+    
+    return tc_was_green
   end
   
   protected
