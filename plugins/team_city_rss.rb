@@ -52,19 +52,19 @@ module TeamCity
     end
     
     def configuration(configuration_name)
-      @configurations[configuration_name.to_s]
+      return @configurations[configuration_name.to_s]
     end
     
     def configurations
-      @configurations.values
+      return @configurations.values
     end
     
     def failed_configurations
-      configurations.select { |configuration| !configuration.success? }
+      return configurations.select { |configuration| !configuration.success? }
     end
     
     def success?
-      configurations.all? { |configuration| configuration.success? }
+      return configurations.all? { |configuration| configuration.success? }
     end
   end
   
@@ -82,11 +82,11 @@ module TeamCity
     end
     
     def latest_build
-      builds.last
+      return builds.last
     end
     
     def success?
-      latest_build.success?
+      return latest_build.success?
     end    
   end
   
@@ -103,11 +103,11 @@ module TeamCity
     end
     
     def project(project_name)
-      @projects[project_name.to_s]
+      return @projects[project_name.to_s]
     end
     
     def projects
-      @projects.values
+      return @projects.values
     end    
   end
 end
@@ -178,10 +178,10 @@ class TeamCityRss < CampfireBot::Plugin
   end
   
   def deploy_branch
-    config['deploy_branch']
+    return config['deploy_branch']
   end
   
   def deploy_project
-    team_city.project(deploy_branch)
+    return team_city.project(deploy_branch)
   end
 end
