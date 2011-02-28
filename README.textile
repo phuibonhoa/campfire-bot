@@ -16,6 +16,7 @@ Internally changes include:
 
 * Added support for multi-word commands
 * Added bundler for dependencies management
+* Automatic support for plugin config files stores in var/plugin\_name.yml
 
 If you have suggestions for useful or fun plugins, let me know; I'm always looking for new plugins to add on!
 
