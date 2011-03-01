@@ -19,8 +19,11 @@ GEM
     little-plugger (1.1.2)
     logging (1.4.3)
       little-plugger (>= 1.1.2)
+    mechanize (1.0.0)
+      nokogiri (>= 1.2.1)
     mime-types (1.16)
     multipart-post (1.1.0)
+    nokogiri (1.4.4)
     rack (1.2.1)
     roauth (0.0.3)
     simple-rss (1.2.3)
@@ -46,6 +49,7 @@ DEPENDENCIES
   hpricot
   i18n
   logging
+  mechanize
   mime-types
   tinder (>= 1.4.3)
   twitter-stream
