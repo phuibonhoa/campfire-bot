@@ -13,6 +13,9 @@ development:
   enable_plugins: 
     - xkcd
     - basecamp
+  custom_plugins_path: /path/to/your/plugins
+  enable_custom_plugins:
+    - custom_plugin_name
 production:
   site: campfire_subdomain_name
   use_ssl: true

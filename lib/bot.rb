@@ -139,6 +139,10 @@ module CampfireBot
         load "#{BOT_ROOT}/plugins/#{plugin_name}.rb"
       end
 
+      @config['enable_custom_plugins'].each do |plugin_name|
+        load "#{@config['custom_plugins_path']}/#{plugin_name}.rb"
+      end
+
       # And instantiate them
       Plugin.registered_plugins.each_pair do |name, klass|
         @log.info "loading plugin: #{name}"
