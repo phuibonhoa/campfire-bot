@@ -26,5 +26,24 @@ module CampfireBot
     def play(str)
       self[:room].play(str)
     end
+    
+    def html(str)
+      html_to_campfire_messages(str).each do |message|
+        if message =~ /\n/m
+          paste(message)
+        else
+          speak(message)
+        end
+      end
+    end
+  
+  private
+  
+    def html_to_campfire_messages(html)
+      parser = HTMLToCampfireParser.new
+      parser.feed(html)
+      return parser.to_campfire
+    end
+  
   end
 end

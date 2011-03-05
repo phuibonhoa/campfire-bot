@@ -13,6 +13,8 @@ require 'tinder'
 require "#{BOT_ROOT}/lib/message"
 require "#{BOT_ROOT}/lib/event"
 require "#{BOT_ROOT}/lib/plugin"
+require "#{BOT_ROOT}/lib/campfire_sgml_parser"
+require "#{BOT_ROOT}/lib/html_to_campfire_parser"
 
 module CampfireBot
   class Bot
@@ -135,11 +137,11 @@ module CampfireBot
     end
 
     def load_plugins
-      @config['enable_plugins'].each do |plugin_name|
+      (@config['enable_plugins'] || []).each do |plugin_name|
         load "#{BOT_ROOT}/plugins/#{plugin_name}.rb"
       end
 
-      @config['enable_custom_plugins'].each do |plugin_name|
+      (@config['enable_custom_plugins'] || []).each do |plugin_name|
         load "#{@config['custom_plugins_path']}/#{plugin_name}.rb"
       end
 
