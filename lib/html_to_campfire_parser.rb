@@ -24,6 +24,7 @@ class HTMLToCampfireParser < CampfireSgmlParser
   attr_accessor :in_ul
   attr_accessor :in_ol
   attr_accessor :list_depth
+  attr_accessor :ol_stack
   
   @@permitted_tags = []
   @@permitted_attributes = []
@@ -289,6 +290,7 @@ class HTMLToCampfireParser < CampfireSgmlParser
     self.in_block = false
     self.result = []
     self.data_stack = []
+    self.ol_stack = []
     self.list_depth = 0
     super(verbose)
   end
@@ -442,12 +444,14 @@ class HTMLToCampfireParser < CampfireSgmlParser
   end
   
   def start_ol(attrs)
+    ol_stack.push(0)
     self.list_depth += 1
     self.in_ol = true
     write("\n")
   end
 
   def end_ol
+    ol_stack.pop
     self.list_depth -= 1
     self.in_ol = false
     write("\n")
@@ -467,9 +471,10 @@ class HTMLToCampfireParser < CampfireSgmlParser
   
   def start_li(attrs)
     if self.in_ol
-      write("#{'#' * list_depth} ")
+      index = ol_stack[-1] += 1
+      write("#{'. ' * (list_depth - 1)}#{index}) ")
     else
-      write("#{'*' * list_depth} ")
+      write("#{'. ' * (list_depth - 1)}* ")
     end
     start_capture("li")
   end
