@@ -42,6 +42,7 @@ private
         answer_response = fetch_json_hash("http://api.stackoverflow.com/1.1/questions/#{question_id}/answers?sort=votes&body=true&pagesize=1", true)
         has_accepted_answer = answer_response['answers'].detect {|a| a['accepted'] || a['up_vote_count'] > 3}
         if has_accepted_answer
+          statements << question_i_know
           # take the most up voted, not the one chosen by question asker
           statements << answer_response['answers'][0]['body']
           statements << "Here's <a href='http://stackoverflow.com/questions/#{question_id}'>where I found the information</a>"
