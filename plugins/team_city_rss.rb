@@ -141,13 +141,17 @@ class TeamCityRss < CampfireBot::Plugin
     else
       msg.speak(":warning: Deploy scheduled but #{deploy_branch} is RED on TeamCity")
       msg.speak("Failures on: " + deploy_project.failed_configurations.map { |failed_configuration| failed_configuration.name }.to_sentence)
-      
-      fail = CampfireBot::Plugin.registered_plugins['Fail'].try(:random_fail)
-      msg.speak(fail) if fail
+      post_fail_image(msg)
       false
     end
     
     return tc_was_green
+  end
+  
+  def post_fail_image(msg)
+    Thread.new do
+      CampfireBot::Plugin.registered_plugins['Fail'].try(:fail, msg)
+    end
   end
   
   protected
