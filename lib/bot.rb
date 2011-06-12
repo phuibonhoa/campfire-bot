@@ -107,6 +107,7 @@ module CampfireBot
             STDOUT.flush
             sleep interval
           rescue Timeout::Error => e
+            @log.error("received timeout #{e} #{e.backtrace.join("\n")}")
             if @timeouts < 5
               sleep(5 * @timeouts)
               @timeouts += 1
